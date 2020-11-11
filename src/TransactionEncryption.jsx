@@ -8,7 +8,7 @@ class TransactionEncryption extends Component {
     super();
     this.state = {
       type: "PAYMENT",
-      amount: 1000000,
+      amount: 10000000,
       number: "4242424242424242",
       cvv: "123",
       expirationDate: "0822",
@@ -40,6 +40,7 @@ class TransactionEncryption extends Component {
     this.setState({
       rsaPublicKey: null,
       transactionId: null,
+      transaction: null
     });
   };
   executeTransaction = () => {
@@ -104,8 +105,10 @@ class TransactionEncryption extends Component {
       console.log(response);
       this.setState({
         transaction: JSON.stringify(response.data, null, 2),
+        rsaPublicKey: null,
+      transactionId: null,
       });
-      this.resetValues();
+      
     });
   };
 
